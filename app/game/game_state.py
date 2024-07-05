@@ -29,6 +29,7 @@ class GameState:
         self.current_word = ""
         # Длина текущего слова
         self.word_length = 0
+
         # Максимальное количество ошибок
         self.max_number_mistakes = 10
         # Текущее количество ошибок
