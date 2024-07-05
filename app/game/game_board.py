@@ -18,7 +18,6 @@ class ConsoleGameBoard(Render):
         :param game_state: Объект игрового состояния GameState.
         """
         if game_state.game_state == State.PLAYING:
-            print(game_state.current_word)
             print(f"Слово: {game_state.get_letters()}")
             print(f"Использованые буквы: {game_state.get_used_letters()}")
             print(f"Ошибки: ({game_state.current_number_mistakes})")
