@@ -10,9 +10,10 @@ class MenuItem:
 
     def __repr__(self):
         return self.name
-    
+
     def add_submenu(self, submenu_item):
         self.submenu.append(submenu_item)
+
 
 class Menu:
     def __init__(self):
@@ -31,13 +32,10 @@ class Menu:
                 if 0 < choice <= len(self.items):
                     item = self.items[choice - 1]
                     if item.action:
-                        item.action()
+                        item.action.run()
                     else:
-                        continue  
+                        continue
                 else:
                     print("Неправильный ввод")
             except ValueError:
                 print("Неправильный ввод")
-
-
-

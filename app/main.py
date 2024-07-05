@@ -1,8 +1,10 @@
 from menu.menu import Menu, MenuItem
+from game.game_app import GameApp, GameAppExit
 
-main_menu  =  Menu()
+if __name__ == "__main__":
 
-main_menu.add_item(MenuItem("Играть", action=None))
-main_menu.add_item(MenuItem("Выход", action=exit))
+    menu = Menu()
+    menu.add_item(MenuItem("Играть", GameApp()))
+    menu.add_item(MenuItem("Выйти", GameAppExit()))
 
-main_menu.show()
+    menu.show()
