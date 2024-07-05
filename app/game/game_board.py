@@ -2,31 +2,25 @@ import os
 from abc import ABC, abstractmethod
 
 from game.game_state import State
+from core.render import Render
 
 
-class GameBoard(ABC):
-    @abstractmethod
+class ConsoleGameBoard(Render):
     def clear(self):
-        pass
-
-    @abstractmethod
-    def render(self, game_state):
-        pass
-
-    @abstractmethod
-    def update(self, game_state):
-        pass
-
-
-class ConsoleGameBoard(GameBoard):
-    def clear(self):
+        """
+        Метод для очистки экрана консоли.
+        """
         os.system('cls' if os.name == 'nt' else 'clear')
 
-    def render(self, game_state):
+    def show(self, game_state):
+        """
+        Метод для отображения текущего состояния игры.
+        :param game_state: Объект игрового состояния GameState.
+        """
         if game_state.game_state == State.PLAYING:
             print(game_state.current_word)
-
-            print(f"Слово: {game_state.letters}")
+            print(f"Слово: {game_state.get_letters()}")
+            print(f"Использованые буквы: {game_state.get_used_letters()}")
             print(f"Ошибки: ({game_state.current_number_mistakes})")
 
         elif game_state.game_state == State.WIN:
@@ -43,5 +37,9 @@ class ConsoleGameBoard(GameBoard):
             print(f"Количество поражений: {game_state.lose_score}")
 
     def update(self, game_state):
+        """
+        Метод для обновления отображения игровой доски.
+        :param game_state: Объект игрового состояния GameState.
+        """
         self.clear()
-        self.render(game_state)
+        self.show(game_state)

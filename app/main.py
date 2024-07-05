@@ -7,4 +7,4 @@ if __name__ == "__main__":
     menu.add_item(MenuItem("Играть", GameApp()))
     menu.add_item(MenuItem("Выйти", GameAppExit()))
 
-    menu.show()
+    menu.update()
